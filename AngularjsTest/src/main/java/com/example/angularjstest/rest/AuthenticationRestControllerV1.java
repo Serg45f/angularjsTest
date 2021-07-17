@@ -1,9 +1,9 @@
 package com.example.angularjstest.rest;
 
-import net.proselyte.jwtappdemo.dto.AuthenticationRequestDto;
-import net.proselyte.jwtappdemo.model.User;
-import net.proselyte.jwtappdemo.security.jwt.JwtTokenProvider;
-import net.proselyte.jwtappdemo.service.UserService;
+import com.example.angularjstest.dto.AuthenticationRequestDto;
+import com.example.angularjstest.model.User;
+import com.example.angularjstest.security.jwt.JwtTokenProvider;
+import com.example.angularjstest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

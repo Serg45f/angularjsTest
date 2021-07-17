@@ -1,12 +1,12 @@
 package com.example.angularjstest.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import net.proselyte.jwtappdemo.model.Role;
-import net.proselyte.jwtappdemo.model.Status;
-import net.proselyte.jwtappdemo.model.User;
-import net.proselyte.jwtappdemo.repository.RoleRepository;
-import net.proselyte.jwtappdemo.repository.UserRepository;
-import net.proselyte.jwtappdemo.service.UserService;
+import com.example.angularjstest.model.Role;
+import com.example.angularjstest.model.Status;
+import com.example.angularjstest.model.User;
+import com.example.angularjstest.repository.RoleRepository;
+import com.example.angularjstest.repository.UserRepository;
+import com.example.angularjstest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

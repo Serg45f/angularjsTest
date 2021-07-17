@@ -1,6 +1,6 @@
 package com.example.angularjstest.service;
 
-import net.proselyte.jwtappdemo.model.User;
+import com.example.angularjstest.model.User;
 
 import java.util.List;
 

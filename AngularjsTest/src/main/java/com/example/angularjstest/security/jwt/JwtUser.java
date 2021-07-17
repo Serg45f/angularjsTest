@@ -1,7 +1,7 @@
 package com.example.angularjstest.security.jwt;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import net.proselyte.jwtappdemo.model.User;
+import com.example.angularjstest.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

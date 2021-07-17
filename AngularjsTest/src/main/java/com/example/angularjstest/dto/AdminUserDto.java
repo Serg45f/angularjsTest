@@ -2,8 +2,8 @@ package com.example.angularjstest.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import net.proselyte.jwtappdemo.model.Status;
-import net.proselyte.jwtappdemo.model.User;
+import com.example.angularjstest.model.Status;
+import com.example.angularjstest.model.User;
 
 /**
  * DTO class for user requests by ROLE_ADMIN

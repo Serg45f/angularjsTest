@@ -1,7 +1,7 @@
 package com.example.angularjstest.security.jwt;
 
 import io.jsonwebtoken.*;
-import net.proselyte.jwtappdemo.model.Role;
+import com.example.angularjstest.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

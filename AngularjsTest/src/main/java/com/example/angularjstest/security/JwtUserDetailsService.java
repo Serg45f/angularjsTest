@@ -1,10 +1,10 @@
 package com.example.angularjstest.security;
 
 import lombok.extern.slf4j.Slf4j;
-import net.proselyte.jwtappdemo.model.User;
-import net.proselyte.jwtappdemo.security.jwt.JwtUser;
-import net.proselyte.jwtappdemo.security.jwt.JwtUserFactory;
-import net.proselyte.jwtappdemo.service.UserService;
+import com.example.angularjstest.model.User;
+import com.example.angularjstest.security.jwt.JwtUser;
+import com.example.angularjstest.security.jwt.JwtUserFactory;
+import com.example.angularjstest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

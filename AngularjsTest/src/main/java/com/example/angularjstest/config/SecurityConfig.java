@@ -1,7 +1,7 @@
 package com.example.angularjstest.config;
 
-import net.proselyte.jwtappdemo.security.jwt.JwtConfigurer;
-import net.proselyte.jwtappdemo.security.jwt.JwtTokenProvider;
+import com.example.angularjstest.security.jwt.JwtConfigurer;
+import com.example.angularjstest.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

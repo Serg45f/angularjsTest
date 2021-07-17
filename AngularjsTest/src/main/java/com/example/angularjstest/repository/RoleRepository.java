@@ -1,6 +1,6 @@
 package com.example.angularjstest.repository;
 
-import net.proselyte.jwtappdemo.model.Role;
+import com.example.angularjstest.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

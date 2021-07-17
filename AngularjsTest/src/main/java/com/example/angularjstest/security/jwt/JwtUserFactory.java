@@ -1,8 +1,8 @@
 package com.example.angularjstest.security.jwt;
 
-import net.proselyte.jwtappdemo.model.Role;
-import net.proselyte.jwtappdemo.model.Status;
-import net.proselyte.jwtappdemo.model.User;
+import com.example.angularjstest.model.Role;
+import com.example.angularjstest.model.Status;
+import com.example.angularjstest.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

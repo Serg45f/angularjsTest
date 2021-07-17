@@ -1,8 +1,8 @@
 package com.example.angularjstest.rest;
 
-import net.proselyte.jwtappdemo.dto.AdminUserDto;
-import net.proselyte.jwtappdemo.model.User;
-import net.proselyte.jwtappdemo.service.UserService;
+import com.example.angularjstest.dto.AdminUserDto;
+import com.example.angularjstest.model.User;
+import com.example.angularjstest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
