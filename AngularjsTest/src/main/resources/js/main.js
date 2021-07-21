@@ -1,45 +1,9 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>AngularJS</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
-
-<!--    <script th:src="@{js/main.js}"></script>-->
-    <link th:href="@{css/main.css}" rel="stylesheet" />
-    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous"/>
-
-    <head>
-<body ng-app="UserManagement" ng-controller="UserController">
-
-<form ng-submit="loginUser()">
-    <table border="0">
-        <tr>
-            <td>Username: </td>
-            <td><input type="text" ng-model="authenticationRequestDto.username" /></td>
-        </tr>
-        <tr>
-            <td>Password: </td>
-            <td><input type="text" ng-model="authenticationRequestDto.password"  /></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Submit" class="blue-button" />
-            </td>
-        </tr>
-    </table>
-</form>
-<br/>
-<a class="create-button" href="/registration.html">Registration</a>
-<script>
-      var app = angular.module("UserManagement", []);
-
+var app = angular.module("UserManagement", []);
+ 
 // Controller Part
 app.controller("UserController", function($scope, $http) {
-
-
+ 
+ 
     $scope.users = [];
     $scope.user = {
         id: 1,
@@ -53,7 +17,7 @@ app.controller("UserController", function($scope, $http) {
             username: "",
             password: ""
         };
-
+ 
     // Now load the data from server
     refreshUsersData();
 
@@ -80,18 +44,18 @@ app.controller("UserController", function($scope, $http) {
     // HTTP POST/PUT methods for add/edit user
     // Call: http://localhost:8075/api/v1/users
     $scope.submitUser = function() {
-
+ 
         var method = "";
         var url = "";
-
+ 
         if ($scope.user.id == -1) {
             method = "POST";
-            url = 'http://localhost:8075/api/v1/users/';
+            url = 'http://localhost:8075/api/v1/users/add';
         } else {
             method = "PUT";
-            url = 'http://localhost:8075/api/v1/users/';
+            url = 'http://localhost:8075/api/v1/users/edit';
         }
-
+ 
         $http({
             method: method,
             url: url,
@@ -101,11 +65,11 @@ app.controller("UserController", function($scope, $http) {
             }
         }).then(success, error);
     };
-
+ 
     $scope.createUser = function() {
         clearFormData();
     }
-
+ 
     // HTTP DELETE- delete user by Id
     // Call: http://localhost:8075/api/v1/users/{empId}
     $scope.deleteUser = function(user) {
@@ -114,7 +78,7 @@ app.controller("UserController", function($scope, $http) {
             url: 'http://localhost:8075/api/v1/users/' + user.id
         }).then(success, error);
     };
-
+ 
     // In case of edit
     $scope.editUser = function(user) {
         $scope.user.id = user.id;
@@ -122,8 +86,8 @@ app.controller("UserController", function($scope, $http) {
         $scope.user.lastName = user.lastName;
         $scope.user.email = user.email;
     };
-
-    // Private Method
+ 
+    // Private Method  
     // HTTP GET- get all users collection
     // Call: http://localhost:8075/api/v1/users
     function refreshUsersData() {
@@ -139,12 +103,12 @@ app.controller("UserController", function($scope, $http) {
             }
         );
     }
-
+ 
     function success(res) {
         refreshUserData();
         clearFormData();
     }
-
+ 
     function error(res) {
         var data = res.data;
         var status = res.status;
@@ -152,7 +116,7 @@ app.controller("UserController", function($scope, $http) {
         var config = res.config;
         alert("Error: " + status + ":" + data);
     }
-
+ 
     // Clear the form
     function clearFormData() {
         $scope.userForm.id = -1;
@@ -161,6 +125,3 @@ app.controller("UserController", function($scope, $http) {
         $scope.userForm.email = ""
     };
 });
-   </script>
-</body>
-</html>

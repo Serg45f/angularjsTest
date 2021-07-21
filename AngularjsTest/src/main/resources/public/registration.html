@@ -3,59 +3,249 @@
    <head>
       <title>AngularJS</title>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
-       
-      <script th:src="@{/main.js}"></script>
-      <link th:href="@{/main.css}" rel="stylesheet" />
+
+<!--      <script th:src="@{/js/main.js}"></script>-->
+      <link th:href="@{/css/main.css}" rel="stylesheet" />
+      <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+      <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous"/>
        
       <head>
-   <body ng-app="EmployeeManagement" ng-controller="EmployeeController">
-      <h3>
-         CRUD: Spring Boot + Rest + AngularJS
-      </h3>
-      <form ng-submit="submitEmployee()">
-         <table border="0">
-            <tr>
-               <td>Emp Id</td>
-               <td>{{employeeForm.empId}}</td>
-            </tr>
-            <tr>
-               <td>Emp No</td>
-               <td><input type="text" ng-model="employeeForm.empNo" /></td>
-            </tr>
-            <tr>
-               <td>Emp Name</td>
-               <td><input type="text" ng-model="employeeForm.empName"  /></td>
-            </tr>
-            <tr>
-               <td colspan="2">
-                  <input type="submit" value="Submit" class="blue-button" />
-               </td>
-            </tr>
-         </table>
-      </form>
-      <br/>
-      <a class="create-button" ng-click="createEmployee()">Create Employee</a>
-      <table border="1">
-         <tr>
-            <th>Emp Id</th>
-            <th>Emp No</th>
-            <th>Emp Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
-         </tr>
-         <!-- $scope.employees -->
-         <tr ng-repeat="employee in employees">
-            <td> {{ employee.empId }}</td>
-            <td> {{ employee.empNo }}</td>
-            <td >{{ employee.empName }}</td>
-            <td>
-            <a ng-click="editEmployee(employee)" class="edit-button">Edit</a>
-            </td>
-            <td>
-            <a ng-click="deleteEmployee(employee)" class="delete-button">Delete</a>
-            </td>
-         </tr>
-      </table>
-   
+   <body ng-app="UserManagement" ng-controller="UserController">
+   <div class="container">
+      <div class="position-relative">
+
+         <div class="position-absolute top-0 start-50 translate-middle-x"></div>
+
+      <div class = "row">
+         <div class="col">
+            <form  ng-submit="submitUser()">
+               <table>
+                  <tr>
+                     <td>User Id</td>
+                     <td>{{user.id}}</td>
+                  </tr>
+                  <tr>
+                     <div class="col-12 px-0">
+                        <div class="col-4 px-0">
+                           <td>Username</td>
+                        </div>
+                        <div class="col-8 px-0">
+                           <td><input type="text" ng-model="user.firstName" /></td>
+                        </div>
+                     </div>
+                  </tr>
+                  <tr>
+                     <div class="col-12 px-0">
+                        <div class="col-3 px-0">
+                           <td>Password</td>
+                        </div>
+                        <div class="col-7 px-0">
+                           <td><input type="password" ng-model="user.firstName" /></td>
+                        </div>
+                     </div>
+                  </tr>
+                  <tr>
+                     <div class="col-12 px-0">
+                        <div class="col-4 px-0">
+                           <td>User firstName</td>
+                        </div>
+                        <div class="col-8 px-0">
+                           <td><input type="text" ng-model="user.firstName" /></td>
+                        </div>
+                     </div>
+                  </tr>
+                  <tr>
+                     <div class="col-12 px-0">
+                        <div class="col-4 px-0">
+                           <td>User lastname</td>
+                        </div>
+                        <div class="col-8 px-0">
+                           <td><input type="text" ng-model="user.firstName"  /></td>
+                        </div>
+                     </div>
+                  </tr>
+                  <tr>
+                     <div class="col-12 px-0">
+                        <div class="col-4 px-0">
+                           <td>User email</td>
+                        </div>
+                        <div class="col-8 px-0">
+                           <td><input type="text" ng-model="user.email"  /></td>
+                        </div>
+                     </div>
+                  </tr>
+                  <tr>
+                     <div class="col-12 px-0">
+                           <td colspan="2">
+                              <input type="submit" value="Submit" class="blue-button" />
+                           </td>
+                     </div>
+                  </tr>
+               </table>
+            </form>
+            <br/>
+
+
+            <a class="create-button" ng-click="createUser()">Create User</a>
+
+
+            <table border="1">
+               <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+               </tr>
+               <!-- $scope.employees -->
+               <tr ng-repeat="user in users">
+                  <td> {{ user.id }}</td>
+                  <td> {{ user.firstName }}</td>
+                  <td >{{ user.lastName }}</td>
+                  <td >{{ user.email }}</td>
+                  <td>
+                  <a ng-click="editUser(user)" class="edit-button">Edit</a>
+                  </td>
+                  <td>
+                  <a ng-click="deleteUser(user)" class="delete-button">Delete</a>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+
+   </div>
+   </div>
+   <script>
+      var app = angular.module("UserManagement", []);
+
+// Controller Part
+app.controller("UserController", function($scope, $http) {
+
+
+    $scope.users = [];
+    $scope.user = {
+        id: 1,
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        email: ""
+    };
+    $scope.authenticationRequestDto = {
+            username: "",
+            password: ""
+        };
+
+    // Now load the data from server
+    refreshUsersData();
+
+ // HTTP POST/PUT methods for add/edit user
+     // Call: http://localhost:8075/api/v1/users
+     $scope.loginUser = function() {
+
+         var method = "";
+         var url = "";
+
+         method = "POST";
+         url = '/api/v1/auth/login';
+
+         $http({
+             method: method,
+             url: url,
+             data: angular.toJson($scope.authenticationRequestDto),
+             headers: {
+                 'Content-Type': 'application/json'
+             }
+         }).then(success, error);
+     };
+
+    // HTTP POST/PUT methods for add/edit user
+    // Call: http://localhost:8075/api/v1/users
+    $scope.submitUser = function() {
+
+        var method = "";
+        var url = "";
+
+        if ($scope.user.id == -1) {
+            method = "POST";
+            url = 'http://localhost:8075/api/v1/users/';
+        } else {
+            method = "PUT";
+            url = 'http://localhost:8075/api/v1/users/';
+        }
+
+        $http({
+            method: method,
+            url: url,
+            data: angular.toJson($scope.user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(success, error);
+    };
+
+    $scope.createUser = function() {
+        clearFormData();
+    }
+
+    // HTTP DELETE- delete user by Id
+    // Call: http://localhost:8075/api/v1/users/{empId}
+    $scope.deleteUser = function(user) {
+        $http({
+            method: 'DELETE',
+            url: 'http://localhost:8075/api/v1/users/' + user.id
+        }).then(success, error);
+    };
+
+    // In case of edit
+    $scope.editUser = function(user) {
+        $scope.user.id = user.id;
+        $scope.user.firstName = user.firstName;
+        $scope.user.lastName = user.lastName;
+        $scope.user.email = user.email;
+    };
+
+    // Private Method
+    // HTTP GET- get all users collection
+    // Call: http://localhost:8075/api/v1/users
+    function refreshUsersData() {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:8075/api/v1/users'
+        }).then(
+            function(res) { // success
+                $scope.users = res.data;
+            },
+            function(res) { // error
+                console.log("Error: " + res.status + " : " + res.data);
+            }
+        );
+    }
+
+    function success(res) {
+        refreshUserData();
+        clearFormData();
+    }
+
+    function error(res) {
+        var data = res.data;
+        var status = res.status;
+        var header = res.header;
+        var config = res.config;
+        alert("Error: " + status + ":" + data);
+    }
+
+    // Clear the form
+    function clearFormData() {
+        $scope.userForm.id = -1;
+        $scope.userForm.firstName = "";
+        $scope.userForm.lastName = "";
+        $scope.userForm.email = ""
+    };
+});
+   </script>
    </body>
 </html>
