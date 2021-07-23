@@ -11,16 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementation of {@link UserService} interface.
- * Wrapper for {@link UserRepository} + business logic.
- *
- * @author Eugene Suleimanov
- * @version 1.0
- */
 
 @Service
 @Slf4j
@@ -46,6 +41,8 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(userRoles);
         user.setStatus(Status.ACTIVE);
+        user.setCreated(LocalDate.now());
+        user.setUpdated(LocalDate.now());
 
         User registeredUser = userRepository.save(user);
 
@@ -79,6 +76,14 @@ public class UserServiceImpl implements UserService {
 
         log.info("IN findById - user: {} found by id: {}", result);
         return result;
+    }
+
+    @Override
+    public User save(User user) {
+        user.setUpdated(LocalDate.now());
+        User editedUser =  userRepository.save(user);
+        log.info("IN delete - user with id: {} successfully saved", user);
+        return editedUser;
     }
 
     @Override

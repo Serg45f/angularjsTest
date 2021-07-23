@@ -5,15 +5,10 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
-/**
- * Base class with property 'id'.
- * Used as a base class for all objects that requires this property.
- *
- * @author Eugene Suleimanov
- * @version 1.0
- */
 
 @MappedSuperclass
 @Data
@@ -25,11 +20,11 @@ public class BaseEntity {
 
     @CreatedDate
     @Column(name = "created")
-    private Date created;
+    private LocalDate created;
 
     @LastModifiedDate
     @Column(name = "updated")
-    private Date updated;
+    private LocalDate updated;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")

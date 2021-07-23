@@ -31,7 +31,7 @@
                            <td>Username</td>
                         </div>
                         <div class="col-8 px-0">
-                           <td><input type="text" ng-model="user.firstName" /></td>
+                           <td><input type="text" ng-model="user.username" /></td>
                         </div>
                      </div>
                   </tr>
@@ -41,7 +41,7 @@
                            <td>Password</td>
                         </div>
                         <div class="col-7 px-0">
-                           <td><input type="password" ng-model="user.firstName" /></td>
+                           <td><input type="password" ng-model="user.password" /></td>
                         </div>
                      </div>
                   </tr>
@@ -61,7 +61,7 @@
                            <td>User lastname</td>
                         </div>
                         <div class="col-8 px-0">
-                           <td><input type="text" ng-model="user.firstName"  /></td>
+                           <td><input type="text" ng-model="user.lastName"  /></td>
                         </div>
                      </div>
                   </tr>
@@ -93,15 +93,17 @@
             <table border="1">
                <tr>
                   <th>Id</th>
+                  <th>Username</th>
                   <th>Name</th>
                   <th>Lastname</th>
                   <th>Email</th>
                   <th>Edit</th>
                   <th>Delete</th>
                </tr>
-               <!-- $scope.employees -->
+               <!-- $scope.users -->
                <tr ng-repeat="user in users">
                   <td> {{ user.id }}</td>
+                  <td> {{ user.username }}</td>
                   <td> {{ user.firstName }}</td>
                   <td >{{ user.lastName }}</td>
                   <td >{{ user.email }}</td>
@@ -127,43 +129,19 @@ app.controller("UserController", function($scope, $http) {
 
     $scope.users = [];
     $scope.user = {
-        id: 1,
+        id: -1,
         username: "",
         password: "",
         firstName: "",
         lastName: "",
         email: ""
     };
-    $scope.authenticationRequestDto = {
-            username: "",
-            password: ""
-        };
 
     // Now load the data from server
     refreshUsersData();
 
- // HTTP POST/PUT methods for add/edit user
-     // Call: http://localhost:8075/api/v1/users
-     $scope.loginUser = function() {
-
-         var method = "";
-         var url = "";
-
-         method = "POST";
-         url = '/api/v1/auth/login';
-
-         $http({
-             method: method,
-             url: url,
-             data: angular.toJson($scope.authenticationRequestDto),
-             headers: {
-                 'Content-Type': 'application/json'
-             }
-         }).then(success, error);
-     };
-
     // HTTP POST/PUT methods for add/edit user
-    // Call: http://localhost:8075/api/v1/users
+    // Call: http://localhost:8075/api/v1/users/
     $scope.submitUser = function() {
 
         var method = "";
@@ -203,6 +181,7 @@ app.controller("UserController", function($scope, $http) {
     // In case of edit
     $scope.editUser = function(user) {
         $scope.user.id = user.id;
+        $scope.user.username = user.username;
         $scope.user.firstName = user.firstName;
         $scope.user.lastName = user.lastName;
         $scope.user.email = user.email;
@@ -210,11 +189,11 @@ app.controller("UserController", function($scope, $http) {
 
     // Private Method
     // HTTP GET- get all users collection
-    // Call: http://localhost:8075/api/v1/users
+    // Call: http://localhost:8075/api/v1/users/
     function refreshUsersData() {
         $http({
             method: 'GET',
-            url: 'http://localhost:8075/api/v1/users'
+            url: 'http://localhost:8075/api/v1/users/'
         }).then(
             function(res) { // success
                 $scope.users = res.data;
@@ -240,10 +219,12 @@ app.controller("UserController", function($scope, $http) {
 
     // Clear the form
     function clearFormData() {
-        $scope.userForm.id = -1;
-        $scope.userForm.firstName = "";
-        $scope.userForm.lastName = "";
-        $scope.userForm.email = ""
+        $scope.user.id = -1;
+        $scope.user.username = "";
+        $scope.user.password = "";
+        $scope.user.firstName = "";
+        $scope.user.lastName = "";
+        $scope.user.email = ""
     };
 });
    </script>

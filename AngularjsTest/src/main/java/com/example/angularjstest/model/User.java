@@ -6,12 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 
-/**
- * Simple domain object that represents application user.
- *
- * @author Eugene Suleimanov
- * @version 1.0
- */
+
 
 @Entity
 @Table(name = "users")
